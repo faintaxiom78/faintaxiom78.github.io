@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秀人网-秀人网模特图集_秀人网写真作品浏览</title>
+<meta name="description" content="秀人网主题首页，汇集秀人网模特的写真图集与作品分类，按模特、风格与更新节奏浏览，提供清晰的图集入口与内容导览。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1420'/%3E%3Ccircle cx='32' cy='26' r='11' fill='%23f2b8c6'/%3E%3Cpath d='M12 56c4-13 12-19 20-19s16 6 20 19z' fill='%23e0859b'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1b1420;
+  --ink-soft:#4a3d50;
+  --muted:#7c6b82;
+  --rose:#d96b8a;
+  --rose-deep:#b34c6b;
+  --blush:#f7e6ea;
+  --blush-2:#fdf6f7;
+  --line:#ecdfe4;
+  --paper:#ffffff;
+  --shadow:0 10px 30px rgba(80,40,60,.09);
+  --radius:16px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--blush-2);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+ul{margin:0;padding:0;list-style:none;}
+.wrap{width:min(1120px,92vw);margin:0 auto;}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(253,246,247,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:11px;}
+.brand-mark{width:40px;height:40px;flex:0 0 auto;}
+.brand-text{
+  font-size:20px;font-weight:700;letter-spacing:.04em;color:var(--ink);
+}
+.brand-sub{
+  display:block;font-size:11px;font-weight:400;letter-spacing:.18em;
+  color:var(--muted);margin-top:1px;
+}
+.nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.nav a{
+  font-size:14px;color:var(--ink-soft);padding:7px 12px;border-radius:999px;
+  transition:background .2s,color .2s;
+}
+.nav a:hover{background:var(--blush);color:var(--rose-deep);}
+.nav .nav-cta{
+  background:var(--rose);color:#fff;font-weight:600;
+}
+.nav .nav-cta:hover{background:var(--rose-deep);color:#fff;}
+
+/* Hero */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#fff 0%,#fbeef1 55%,#f6dde4 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+  padding:62px 0 66px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.16em;color:var(--rose-deep);
+  background:#fff;border:1px solid var(--line);
+  padding:6px 13px;border-radius:999px;font-weight:600;
+}
+.eyebrow::before{
+  content:"";width:6px;height:6px;border-radius:50%;background:var(--rose);
+}
+h1{
+  font-size:clamp(30px,4.4vw,46px);
+  line-height:1.25;margin:20px 0 14px;letter-spacing:.02em;
+}
+.hero-lead{
+  font-size:16px;color:var(--ink-soft);max-width:34em;margin:0 0 26px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:600;padding:12px 24px;border-radius:999px;
+  transition:transform .18s,background .2s,box-shadow .2s;
+}
+.btn-primary{
+  background:var(--rose);color:#fff;box-shadow:0 8px 20px rgba(217,107,138,.32);
+}
+.btn-primary:hover{background:var(--rose-deep);transform:translateY(-1px);}
+.btn-ghost{
+  background:#fff;color:var(--ink-soft);border:1px solid var(--line);
+}
+.btn-ghost:hover{border-color:var(--rose);color:var(--rose-deep);}
+.hero-figure{
+  background:#fff;border-radius:22px;padding:16px;
+  box-shadow:var(--shadow);border:1px solid var(--line);
+  transform:rotate(1.2deg);
+}
+.hero-figure figcaption{
+  font-size:12px;color:var(--muted);text-align:center;margin-top:10px;letter-spacing:.06em;
+}
+.hero-stats{
+  display:flex;gap:26px;margin-top:30px;flex-wrap:wrap;
+}
+.hero-stats div{font-size:13px;color:var(--muted);}
+.hero-stats strong{
+  display:block;font-size:22px;color:var(--ink);font-weight:700;line-height:1.3;
+}
+
+/* Sections */
+section{padding:64px 0;}
+.section-head{margin-bottom:30px;max-width:44em;}
+.section-head h2{
+  font-size:clamp(22px,2.6vw,28px);margin:0 0 10px;letter-spacing:.02em;
+}
+.section-head p{margin:0;color:var(--muted);font-size:15px;}
+.kicker{
+  font-size:12px;letter-spacing:.2em;color:var(--rose-deep);
+  font-weight:700;margin-bottom:10px;display:block;
+}
+
+/* Filter */
+.filter-bar{
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  margin-bottom:26px;
+}
+.chip{
+  font-size:13.5px;padding:8px 16px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);color:var(--ink-soft);
+  cursor:pointer;font-family:inherit;transition:all .18s;
+}
+.chip:hover{border-color:var(--rose);color:var(--rose-deep);}
+.chip.is-active{
+  background:var(--ink);border-color:var(--ink);color:#fff;
+}
+.search-box{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:8px 16px;min-width:220px;
+}
+.search-box svg{width:15px;height:15px;flex:0 0 auto;stroke:var(--muted);}
+.search-box input{
+  border:0;outline:none;font-family:inherit;font-size:14px;
+  background:transparent;width:100%;color:var(--ink);
+}
+
+/* Cards */
+.grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .2s,box-shadow .2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.card-media{
+  aspect-ratio:4/3;background:linear-gradient(140deg,#f8e3e9,#f1d3dc);
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.card-media svg{width:64%;height:64%;}
+.card-tag{
+  position:absolute;top:12px;left:12px;font-size:11.5px;font-weight:600;
+  background:rgba(255,255,255,.92);color:var(--rose-deep);
+  padding:4px 10px;border-radius:999px;letter-spacing:.04em;
+}
+.card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1;}
+.card-body h3{font-size:16.5px;margin:0;letter-spacing:.01em;}
+.card-body p{
+  margin:0;font-size:13.8px;color:var(--muted);line-height:1.7;flex:1;
+}
+.card-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;color:var(--muted);padding-top:9px;border-top:1px dashed var(--line);
+}
+.card-meta span:last-child{color:var(--rose-deep);font-weight:600;}
+
+/* Feature band */
+.band{
+  background:var(--ink);color:#f2e7ea;
+}
+.band .wrap{padding:60px 0;}
+.band h2{color:#fff;font-size:clamp(22px,2.6vw,28px);margin:0 0 12px;}
+.band .kicker{color:#e6a3b6;}
+.band p{color:#c9b9c1;font-size:15px;max-width:46em;margin:0 0 32px;}
+.band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.band-item{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:20px 18px;
+}
+.band-item .num{
+  font-size:13px;color:#e6a3b6;font-weight:700;letter-spacing:.1em;
+}
+.band-item h3{font-size:15.5px;margin:8px 0 6px;color:#fff;}
+.band-item p{font-size:13px;margin:0;color:#b8a7b0;line-height:1.7;}
+
+/* Reading list */
+.read-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:36px;align-items:start;}
+.read-main h2{font-size:clamp(22px,2.6vw,27px);margin:0 0 18px;}
+.read-main p{font-size:15px;color:var(--ink-soft);margin:0 0 16px;}
+.read-main p strong{color:var(--rose-deep);font-weight:600;}
+.side-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 22px 20px;box-shadow:var(--shadow);
+}
+.side-card h3{font-size:16px;margin:0 0 14px;}
+.side-list li{
+  display:flex;gap:10px;font-size:13.8px;color:var(--ink-soft);
+  padding:10px 0;border-bottom:1px dashed var(--line);
+}
+.side-list li:last-child{border-bottom:0;padding-bottom:0;}
+.side-list .dot{
+  flex:0 0 auto;width:6px;height:6px;border-radius:50%;
+  background:var(--rose);margin-top:8px;
+}
+
+/* FAQ */
+.faq{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.faq-list{max-width:52em;}
+.faq-item{border-bottom:1px solid var(--line);padding:18px 0;}
+.faq-item:last-child{border-bottom:0;}
+.faq-item summary{
+  cursor:pointer;font-size:15.5px;font-weight:600;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:"+";font-size:20px;color:var(--rose);font-weight:400;line-height:1;
+}
+.faq-item[open] summary::after{content:"−";}
+.faq-item p{margin:12px 0 0;font-size:14.5px;color:var(--muted);}
+
+/* CTA */
+.cta-band{
+  background:linear-gradient(150deg,#fbeef1,#f4d9e1);
+  border-top:1px solid var(--line);
+}
+.cta-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+  padding:52px 0;flex-wrap:wrap;
+}
+.cta-inner h2{font-size:clamp(21px,2.4vw,26px);margin:0 0 8px;}
+.cta-inner p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:38em;}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap;}
+[aria-disabled="true"]{opacity:.85;}
+
+/* Footer */
+.site-footer{
+  background:var(--ink);color:#a9989f;padding:40px 0 30px;font-size:13.5px;
+}
+.footer-top{
+  display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.footer-brand{display:flex;align-items:center;gap:10px;}
+.footer-brand .brand-text{color:#fff;font-size:17px;}
+.footer-brand svg{width:32px;height:32px;}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-links a:hover{color:#e6a3b6;}
+.footer-bottom{padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#7d6c74;font-size:12.5px;}
+
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:44px 0 50px;}
+  .hero-figure{transform:none;max-width:420px;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .band-grid{grid-template-columns:repeat(2,1fr);}
+  .read-grid{grid-template-columns:1fr;}
+  .search-box{margin-left:0;width:100%;}
+}
+@media (max-width:620px){
+  .header-inner{flex-wrap:wrap;gap:10px;padding:12px 0;}
+  .nav{gap:2px;}
+  .nav a{font-size:13px;padding:6px 9px;}
+  section{padding:46px 0;}
+  .grid{grid-template-columns:1fr;}
+  .band-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:18px;}
+  .cta-inner{padding:40px 0;}
+  .footer-top{flex-direction:column;gap:18px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="秀人网首页">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" rx="14" fill="#1b1420"/>
+        <circle cx="32" cy="25" r="10.5" fill="#f2b8c6"/>
+        <path d="M12 56c4-13 12-19 20-19s16 6 20 19z" fill="#d96b8a"/>
+      </svg>
+      <span class="brand-text">秀人网<span class="brand-sub">X I U R E N</span></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#gallery">图集分类</a>
+      <a href="#models">模特导览</a>
+      <a href="#read">浏览解析</a>
+      <a href="#faq">常见问题</a>
+      <a class="nav-cta" href="#gallery">开始浏览</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">写真图集 · 主题首页</span>
+        <h1 id="hero-title">秀人网</h1>
+        <p class="hero-lead">秀人网以模特写真图集为主要内容形态，按模特、风格与更新节奏组织作品。这里把散落的图集梳理成可浏览的目录：先看分类，再进单套作品，减少无目的翻找。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#gallery">浏览图集分类</a>
+          <a class="btn btn-ghost" href="#models">按模特查找</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>6 类</strong>风格标签</div>
+          <div><strong>分栏</strong>模特 / 风格 / 更新</div>
+          <div><strong>逐套</strong>图集入口</div>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <svg viewBox="0 0 400 300" role="img" aria-label="秀人网图集封面示意插画" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fbeef1"/>
+              <stop offset="1" stop-color="#f0cfd9"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="300" rx="14" fill="url(#g1)"/>
+          <circle cx="300" cy="88" r="46" fill="#fff" opacity=".55"/>
+          <rect x="34" y="42" width="150" height="12" rx="6" fill="#e3a8b9"/>
+          <rect x="34" y="66" width="104" height="10" rx="5" fill="#eec3cf"/>
+          <rect x="34" y="150" width="150" height="112" rx="10" fill="#fff" opacity=".85"/>
+          <circle cx="109" cy="186" r="20" fill="#f2b8c6"/>
+          <path d="M76 246c4-16 15-24 33-24s29 8 33 24z" fill="#d96b8a"/>
+          <rect x="204" y="150" width="162" height="52" rx="10" fill="#fff" opacity=".7"/>
+          <rect x="204" y="212" width="162" height="50" rx="10" fill="#fff" opacity=".5"/>
+          <rect x="220" y="168" width="80" height="8" rx="4" fill="#d9a2b1"/>
+          <rect x="220" y="230" width="110" height="8" rx="4" fill="#d9a2b1"/>
+        </svg>
+        <figcaption>图集封面示意 · 分类与作品索引</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">GALLERY INDEX</span>
+        <h2 id="gallery-title">秀人网图集分类</h2>
+        <p>按下方的风格标签筛选图集方向，或直接输入模特名检索。秀人网的作品通常以单套图集为单位组织，分类只是入口，具体内容仍以每套作品为准。</p>
+      </div>
+
+      <div class="filter-bar" role="group" aria-label="图集筛选">
+        <button class="chip is-active" data-filter="all" type="button">全部</button>
+        <button class="chip" data-filter="室内" type="button">室内</button>
+        <button class="chip" data-filter="外景" type="button">外景</button>
+        <button class="chip" data-filter="日常" type="button">日常</button>
+        <button class="chip" data-filter="棚拍" type="button">棚拍</button>
+        <label class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="searchInput" type="search" placeholder="输入模特名或风格" aria-label="搜索图集">
+        </label>
+      </div>
+
+      <div class="grid" id="cardGrid">
+        <article class="card" data-tag="室内 日常">
+          <div class="card-media">
+            <span class="card-tag">室内 · 日常</span>
+            <svg viewBox="0 0 120 90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="14" width="100" height="62" rx="8" fill="#fff" opacity=".8"/>
+              <circle cx="60" cy="38" r="12" fill="#f2b8c6"/>
+              <path d="M40 68c3-12 10-17 20-17s17 5 20 17z" fill="#d96b8a"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>居家室内套图</h3>
+            <p>以柔和光线与居家陈设为主，画面节奏偏静，适合偏好日常氛围的浏览者。</p>
+            <div class="card-meta"><span>室内 · 日常</span><span>进入图集</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-tag="外景 日常">
+          <div class="card-media">
+            <span class="card-tag">外景 · 日常</span>
+            <svg viewBox="0 0 120 90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="88" cy="26" r="12" fill="#f7d5df"/>
+              <path d="M8 74c14-24 28-34 52-34s38 10 52 34z" fill="#e0859b" opacity=".8"/>
+              <circle cx="58" cy="42" r="10" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>城市外景系列</h3>
+            <p>街景与自然光结合，构图随环境变化，同一模特在不同场景下呈现不同状态。</p>
+            <div class="card-meta"><span>外景 · 日常</span><span>进入图集</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-tag="棚拍">
+          <div class="card-media">
+            <span class="card-tag">棚拍</span>
+            <svg viewBox="0 0 120 90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <rect x="22" y="12" width="76" height="66" rx="6" fill="#fff" opacity=".85"/>
+              <rect x="34" y="22" width="52" height="46" rx="4" fill="#f4d3dc"/>
+              <circle cx="60" cy="42" r="11" fill="#d96b8a"/>
+              <path d="M44 68c2-10 8-14 16-14s14 4 16 14z" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>棚拍布光作品</h3>
+            <p>背景与灯光经过控制，色彩和质感更集中，适合观察造型与用光细节。</p>
+            <div class="card-meta"><span>棚拍</span><span>进入图集</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-tag="室内 棚拍">
+          <div class="card-media">
+            <span class="card-tag">室内 · 棚拍</span>
+            <svg viewBox="0 0 120 90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <rect x="14" y="18" width="42" height="54" rx="6" fill="#fff" opacity=".8"/>
+              <rect x="64" y="18" width="42" height="54" rx="6" fill="#fff" opacity=".55"/>
+              <circle cx="35" cy="42" r="10" fill="#f2b8c6"/>
+              <circle cx="85" cy="42" r="10" fill="#e0859b"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>双人主题合集</h3>
+            <p>两位模特同框的套图，侧重互动与画面平衡，浏览时可对照不同造型。</p>
+            <div class="card-meta"><span>室内 · 棚拍</span><span>进入图集</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-tag="外景 棚拍">
+          <div class="card-media">
+            <span class="card-tag">外景 · 棚拍</span>
+            <svg viewBox="0 0 120 90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="52" width="100" height="26" rx="5" fill="#e6c4ce"/>
+              <circle cx="60" cy="32" r="14" fill="#fff"/>
+              <circle cx="60" cy="32" r="8" fill="#d96b8a"/>
+              <rect x="44" y="48" width="32" height="20" rx="6" fill="#f2b8c6"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>混合场景特辑</h3>
+            <p>外景与棚拍交替出现，通过场景切换制造对比，适合整体浏览而非逐张放大。</p>
+            <div class="card-meta"><span>外景 · 棚拍</span><span>进入图集</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-tag="日常 外景">
+          <div class="card-media">
+            <span class="card-tag">日常 · 外景</span>
+            <svg viewBox="0 0 120 90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 78c16-18 30-26 54-26s38 8 54 26z" fill="#f4d3dc"/>
+              <circle cx="46" cy="38" r="12" fill="#fff"/>
+              <circle cx="78" cy="42" r="9" fill="#f2b8c6"/>
+              <rect x="40" y="52" width="44" height="16" rx="8" fill="#d96b8a" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>轻日常记录</h3>
+            <p>接近生活片段的拍摄方式，妆造与场景节制，重点落在自然状态与表情。</p>
+            <div class="card-meta"><span>日常 · 外景</span><span>进入图集</span></div>
+          </div>
+        </article>
+      </div>
+      <p id="emptyTip" style="display:none;color:var(--muted);font-size:14px;margin-top:18px;">没有匹配的图集，试试其他风格标签或更换关键词。</p>
+    </div>
+  </section>
+
+  <!-- Band -->
+  <section class="band" id="models" aria-labelledby="models-title">
+    <div class="wrap">
+      <span class="kicker">BROWSE BY MODEL</span>
+      <h2 id="models-title">从模特切入的浏览方式</h2>
+      <p>秀人网的图集以模特为线索串联。与其按时间线翻页，不如先锁定一位模特，再沿其作品序列查看风格变化，这样更容易建立对作品的整体印象。</p>
+      <div class="band-grid">
+        <div class="band-item">
+          <span class="num">01</span>
+          <h3>先看模特页</h3>
+          <p>确认模特的作品集合与风格偏向，再决定是否进入单套图集。</p>
+        </div>
+        <div class="band-item">
+          <span class="num">02</span>
+          <h3>再筛风格</h3>
+          <p>用室内、外景、棚拍、日常四类标签缩小范围，减少无关浏览。</p>
+        </div>
+        <div class="band-item">
+          <span class="num">03</span>
+          <h3>对照更新</h3>
+          <p>按更新顺序浏览同一模特的新套图，观察造型与场景的延续关系。</p>
+        </div>
+        <div class="band-item">
+          <span class="num">04</span>
+          <h3>收藏与回看</h3>
+          <p>对偏好的套图做标记，便于后续回访时快速定位。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reading -->
+  <section id="read" aria-labelledby="read-title">
+    <div class="wrap read-grid">
+      <div class="read-main">
+        <span class="kicker">READING NOTES</span>
+        <h2 id="read-title">怎样读懂一套秀人网图集</h2>
+        <p>一套图集的信息密度，往往不在单张照片里，而在整体编排。秀人网的套图通常包含多组造型与场景，浏览时可以先看首尾两张，判断这套作品的基调，再回到中间查看变化。</p>
+        <p>如果关注造型，建议留意同一模特在不同套图里的妆发与服装差异；如果关注画面，则把注意力放在光线方向与背景选择上。<strong>秀人网</strong>的棚拍作品对用光较为讲究，而外景作品更依赖自然条件，两者的观看方式并不相同。</p>
+        <p>对于初次访问的读者，比较稳妥的路径是：从图集分类进入，选一个风格标签，浏览两到三套作品，再决定是否深入某位模特的作品序列。这样既不会在目录中迷失，也能较快建立对内容范围的判断。</p>
+        <p>需要说明的是，图集的呈现效果与设备、网络状况相关，页面加载速度会影响连续翻看的体验。若以浏览为目的，建议在稳定的网络环境下查看，并优先打开分类清晰的入口。</p>
+      </div>
+      <aside class="side-card" aria-label="浏览要点">
+        <h3>浏览要点</h3>
+        <ul class="side-list">
+          <li><span class="dot"></span><span>先确定风格标签，再进入具体图集，避免无序翻页。</span></li>
+          <li><span class="dot"></span><span>同一模特的多套作品，适合按更新顺序对照观看。</span></li>
+          <li><span class="dot"></span><span>棚拍看用光与造型，外景看环境与自然状态。</span></li>
+          <li><span class="dot"></span><span>首尾两张通常能反映一套图集的整体基调。</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">FAQ</span>
+        <h2 id="faq-title">关于秀人网的常见问题</h2>
+        <p>以下回答围绕页面实际提供的内容与浏览方式展开，不涉及作品之外的推断。</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>秀人网的内容以什么形式组织？</summary>
+          <p>以单套图集为主要单位，按模特、风格与更新顺序建立索引。分类标签用于缩小范围，具体内容仍以每套作品为准。</p>
+        </details>
+        <details class="faq-item">
+          <summary>图集分类和风格标签有什么区别？</summary>
+          <p>分类是入口层级，风格标签用于在入口内进一步筛选。室内、外景、棚拍、日常四类标签可以叠加搜索关键词使用。</p>
+        </details>
+        <details class="faq-item">
+          <summary>怎样快速找到某位模特的作品？</summary>
+          <p>可在图集分类上方的搜索框输入模特名或风格词，页面会即时过滤当前展示的卡片；也可先按风格标签缩小范围再查找。</p>
+        </details>
+        <details class="faq-item">
+          <summary>页面上的下载入口现在可用吗？</summary>
+          <p>下载入口目前处于占位状态，尚未开放实际文件获取，按钮显示为不可用，后续将以正式地址替换。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 id="cta-title">从分类开始，进入秀人网的图集目录</h2>
+        <p>选一个风格标签，或直接搜索模特名，把浏览范围收窄到真正想看的部分。图集内容以静态页面呈现，无需额外操作即可查看分类与作品说明。</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="#gallery">回到图集分类</a>
+        <a class="btn btn-ghost" href="#" download data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none;">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="#2a2030"/>
+          <circle cx="32" cy="25" r="10.5" fill="#f2b8c6"/>
+          <path d="M12 56c4-13 12-19 20-19s16 6 20 19z" fill="#d96b8a"/>
+        </svg>
+        <span class="brand-text">秀人网</span>
+      </div>
+      <nav class="footer-links" aria-label="页尾导航">
+        <a href="#gallery">图集分类</a>
+        <a href="#models">模特导览</a>
+        <a href="#read">浏览解析</a>
+        <a href="#faq">常见问题</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>秀人网主题首页 · 图集分类与浏览导览</span>
+      <span>内容以单套图集为单位组织，页面说明仅描述浏览方式。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips = document.querySelectorAll('.chip');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#cardGrid .card'));
+  var input = document.getElementById('searchInput');
+  var emptyTip = document.getElementById('emptyTip');
+  var activeFilter = 'all';
+
+  function apply(){
+    var q = (input.value || '').trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function(card){
+      var tag = card.getAttribute('data-tag') || '';
+      var text = card.textContent.toLowerCase();
+      var okTag = activeFilter === 'all' || tag.indexOf(activeFilter) !== -1;
+      var okQuery = !q || text.indexOf(q) !== -1;
+      var show = okTag && okQuery;
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    emptyTip.style.display = visible ? 'none' : 'block';
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      activeFilter = chip.getAttribute('data-filter');
+      apply();
+    });
+  });
+
+  input.addEventListener('input', apply);
+})();
+</script>
+
+</body>
+          </html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日大赛在线吃瓜-每日大赛热点吃瓜_在线吃瓜每日大赛热门看板</title>
+<meta name="description" content="每日大赛在线吃瓜首页，汇集每日大赛热点话题、热门讨论与在线吃瓜看点，按时间线呈现当日大赛相关内容，帮助访客快速了解吃瓜动态与讨论方向。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23151619'/%3E%3Cpath d='M20 26c0-5 4-9 9-9h6c5 0 9 4 9 9v4c0 7-4 11-9 11h-2l-6 6v-6c-4-1-7-5-7-11z' fill='%23ffb648'/%3E%3Ccircle cx='28' cy='27' r='2.4' fill='%23151619'/%3E%3Ccircle cx='37' cy='27' r='2.4' fill='%23151619'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#111214;
+  --bg-soft:#181a1e;
+  --card:#1d2025;
+  --line:#2b2f36;
+  --text:#edeef0;
+  --muted:#a2a8b3;
+  --accent:#ffb648;
+  --accent-2:#ff7a59;
+  --radius:16px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(900px 420px at 80% -8%, rgba(255,122,89,.16), transparent 60%),
+    radial-gradient(700px 380px at 8% 0%, rgba(255,182,72,.13), transparent 60%),
+    var(--bg);
+  color:var(--text);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{max-width:100%;}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px;}
+
+/* header */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(17,18,20,.86);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-row{display:flex;align-items:center;gap:22px;min-height:66px;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:.2px;white-space:nowrap;}
+.logo .mark{width:34px;height:34px;flex:0 0 34px;}
+.logo span{background:linear-gradient(92deg,#fff 20%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;}
+nav.main{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;}
+nav.main a{
+  font-size:14px;color:var(--muted);padding:8px 12px;border-radius:9px;transition:.18s;
+}
+nav.main a:hover{color:var(--text);background:#23262c;}
+
+/* hero */
+.hero{padding:52px 0 34px;}
+.hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:34px;align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--accent);
+  background:rgba(255,182,72,.1);border:1px solid rgba(255,182,72,.28);
+  padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+h1{
+  font-size:clamp(28px,4.4vw,44px);
+  line-height:1.24;margin:0 0 16px;letter-spacing:.5px;font-weight:800;
+}
+h1 em{font-style:normal;color:var(--accent);}
+.lead{color:var(--muted);font-size:15.5px;max-width:56ch;margin:0 0 26px;}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:11px;font-size:14.5px;font-weight:700;
+  transition:.18s;border:1px solid transparent;
+}
+.btn.primary{background:linear-gradient(100deg,var(--accent),var(--accent-2));color:#1a1408;}
+.btn.primary:hover{filter:brightness(1.07);}
+.btn.ghost{border-color:var(--line);color:var(--text);background:#1a1c20;}
+.btn.ghost:hover{border-color:#3b4048;}
+.btn[aria-disabled="true"]{opacity:.55;cursor:default;}
+
+.hero-art{
+  background:linear-gradient(160deg,#1f2227,#171a1e);
+  border:1px solid var(--line);border-radius:22px;padding:16px;
+  box-shadow:0 24px 60px -30px rgba(255,122,89,.4);
+}
+.hero-art .cap{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);padding:2px 6px 10px;}
+.dot-live{display:inline-flex;align-items:center;gap:6px;color:var(--accent-2);}
+.dot-live i{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 3px rgba(255,122,89,.18);}
+
+/* section base */
+section.block{padding:38px 0;}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
+.sec-head h2{font-size:22px;margin:0;font-weight:800;letter-spacing:.3px;}
+.sec-head p{margin:4px 0 0;color:var(--muted);font-size:14px;}
+.sec-tag{font-size:12.5px;color:var(--muted);border:1px solid var(--line);padding:4px 11px;border-radius:999px;}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;display:flex;flex-direction:column;gap:9px;transition:.2s;
+}
+.card:hover{border-color:#3d434d;transform:translateY(-2px);}
+.card .k{font-size:12px;color:var(--accent);letter-spacing:1px;font-weight:700;}
+.card h3{font-size:16.5px;margin:0;line-height:1.5;}
+.card p{margin:0;font-size:14px;color:var(--muted);}
+
+/* timeline */
+.timeline{position:relative;margin:0;padding:0;list-style:none;}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--accent),transparent);}
+.timeline li{position:relative;padding:0 0 22px 34px;}
+.timeline li::before{
+  content:"";position:absolute;left:3px;top:8px;width:14px;height:14px;border-radius:50%;
+  background:#111214;border:3px solid var(--accent);
+}
+.timeline time{font-size:12.5px;color:var(--accent);font-weight:700;letter-spacing:.5px;}
+.timeline h4{margin:3px 0 4px;font-size:15.5px;}
+.timeline p{margin:0;font-size:14px;color:var(--muted);}
+
+/* split panel */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.panel{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+.panel h3{margin:0 0 12px;font-size:17px;}
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.checklist li{font-size:14px;color:var(--muted);padding-left:24px;position:relative;}
+.checklist li::before{
+  content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border-radius:2px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+}
+.checklist strong{color:var(--text);font-weight:600;}
+
+/* filter */
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.chip{
+  font-size:13.5px;padding:8px 16px;border-radius:999px;cursor:pointer;
+  background:#1a1c20;border:1px solid var(--line);color:var(--muted);transition:.18s;
+  font-family:inherit;
+}
+.chip:hover{color:var(--text);border-color:#3b4048;}
+.chip.on{background:linear-gradient(100deg,var(--accent),var(--accent-2));color:#1a1408;border-color:transparent;font-weight:700;}
+.feed{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.item{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;
+}
+.item .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;margin-bottom:6px;}
+.item .meta b{color:var(--accent);font-weight:700;}
+.item h4{margin:0 0 6px;font-size:15.5px;}
+.item p{margin:0;font-size:13.8px;color:var(--muted);}
+.empty{display:none;color:var(--muted);font-size:14px;padding:24px;border:1px dashed var(--line);border-radius:14px;text-align:center;}
+
+/* note */
+.note{
+  border-left:3px solid var(--accent);background:rgba(255,182,72,.06);
+  padding:16px 20px;border-radius:0 12px 12px 0;font-size:14px;color:var(--muted);
+}
+.note strong{color:var(--text);}
+
+/* footer */
+footer.site{
+  margin-top:26px;border-top:1px solid var(--line);background:#0e0f11;padding:30px 0 34px;
+}
+.foot-grid{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;}
+.foot-brand{max-width:420px;}
+.foot-brand .logo{margin-bottom:10px;font-size:16px;}
+.foot-brand p{margin:0;font-size:13.5px;color:var(--muted);}
+.foot-links{display:flex;gap:44px;flex-wrap:wrap;}
+.foot-links h5{margin:0 0 10px;font-size:13px;color:var(--text);letter-spacing:.6px;}
+.foot-links a{display:block;font-size:13.5px;color:var(--muted);margin-bottom:7px;}
+.foot-links a:hover{color:var(--accent);}
+.copy{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:#6d737d;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;}
+  .cards{grid-template-columns:1fr 1fr;}
+  .split{grid-template-columns:1fr;}
+  .feed{grid-template-columns:1fr;}
+}
+@media (max-width:640px){
+  .nav-row{flex-wrap:wrap;padding:10px 0;gap:10px;}
+  nav.main{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;}
+  nav.main a{white-space:nowrap;font-size:13.5px;padding:6px 10px;}
+  .logo{font-size:15.5px;}
+  .hero{padding:30px 0 18px;}
+  .cards{grid-template-columns:1fr;}
+  .lead{font-size:14.5px;}
+  section.block{padding:26px 0;}
+  .foot-links{gap:28px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="logo" href="#top">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1f2227"/>
+        <path d="M20 26c0-5 4-9 9-9h6c5 0 9 4 9 9v4c0 7-4 11-9 11h-2l-6 6v-6c-4-1-7-5-7-11z" fill="#ffb648"/>
+        <circle cx="28" cy="27" r="2.4" fill="#151619"/>
+        <circle cx="37" cy="27" r="2.4" fill="#151619"/>
+      </svg>
+      <span>每日大赛在线吃瓜</span>
+    </a>
+    <nav class="main" aria-label="站内导航">
+      <a href="#today">今日看点</a>
+      <a href="#timeline">时间线</a>
+      <a href="#board">热门看板</a>
+      <a href="#rules">吃瓜须知</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="#ffb648" stroke-width="1.8" stroke-linecap="round"/></svg>
+          热点内容 · 当日更新
+        </span>
+        <h1>每日大赛在线吃瓜</h1>
+        <p class="lead">这里是<strong>每日大赛在线吃瓜</strong>的首页入口。围绕每天的大赛热点，我们把讨论度高的看点、话题走向和网友关注点按时间顺序整理出来，方便你一次看清当天吃瓜的重点在哪里。</p>
+        <div class="btn-row">
+          <a class="btn primary" href="#today">查看今日看点</a>
+          <a class="btn ghost" href="#board">进入热门看板</a>
+        </div>
+      </div>
+
+      <aside class="hero-art" aria-label="今日吃瓜概览">
+        <div class="cap">
+          <span class="dot-live"><i></i>在线吃瓜中</span>
+          <span>今日概览</span>
+        </div>
+        <svg viewBox="0 0 360 210" role="img" aria-label="吃瓜话题气泡示意插画">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffb648"/>
+              <stop offset="1" stop-color="#ff7a59"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="360" height="210" rx="14" fill="#15171b"/>
+          <path d="M40 118c0-26 20-46 46-46h44c26 0 46 20 46 46v10c0 20-14 34-34 38l-14 16-4-16h-4c-24-2-40-18-40-38z" fill="url(#g1)" opacity=".92"/>
+          <circle cx="86" cy="96" r="5" fill="#15171b"/>
+          <circle cx="112" cy="96" r="5" fill="#15171b"/>
+          <circle cx="138" cy="96" r="5" fill="#15171b"/>
+          <rect x="210" y="52" width="112" height="12" rx="6" fill="#2b2f36"/>
+          <rect x="210" y="76" width="86" height="12" rx="6" fill="#2b2f36"/>
+          <rect x="210" y="100" width="100" height="12" rx="6" fill="#2b2f36"/>
+          <rect x="210" y="128" width="64" height="26" rx="13" fill="#ffb648" opacity=".85"/>
+          <rect x="210" y="166" width="112" height="12" rx="6" fill="#2b2f36"/>
+          <circle cx="314" cy="40" r="7" fill="#ff7a59"/>
+        </svg>
+      </aside>
+    </div>
+  </div>
+
+  <section class="block" id="today">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>今日大赛热点看点</h2>
+          <p>把当日讨论集中度高的方向先摆出来，方便快速判断从哪看起。</p>
+        </div>
+        <span class="sec-tag">共 3 个方向</span>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="k">看点一</div>
+          <h3>赛场话题的集中爆发</h3>
+          <p>每日大赛相关内容往往在结果公布前后进入讨论高峰。这一栏关注讨论量的起落节点，说明为什么同一场大赛会在特定时段被反复提起，以及吃瓜用户最常停留的环节。</p>
+        </article>
+        <article class="card">
+          <div class="k">看点二</div>
+          <h3>网友观点与分歧点</h3>
+          <p>同一条大赛信息，在不同讨论区会形成不同解读。这里梳理争议集中的地方，包括判断标准、评价角度和表达方式，让你看到的不只是一个结论，而是分歧怎么来的。</p>
+        </article>
+        <article class="card">
+          <div class="k">看点三</div>
+          <h3>后续走向与二次讨论</h3>
+          <p>热点不会在当天结束。二次讨论通常来自补充说法、当事人回应或新的对照材料。本栏目记录这些后续变化的出现顺序，帮助理解每日大赛在线吃瓜为何需要持续跟进。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="timeline">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>当日吃瓜时间线</h2>
+          <p>按讨论出现的先后排列，先看起因，再看发酵。</p>
+        </div>
+      </div>
+      <ol class="timeline">
+        <li>
+          <time>上午 · 信息出现</time>
+          <h4>大赛相关说法开始流传</h4>
+          <p>最初的内容通常比较简短，只有结论没有背景。此时讨论量不大，但已经有人在问“到底怎么回事”，这是每日大赛在线吃瓜的起点。</p>
+        </li>
+        <li>
+          <time>午间 · 讨论扩散</time>
+          <h4>不同讨论区出现对照说法</h4>
+          <p>随着更多人参与，同一件事出现多种版本。读者需要区分哪些是当事人表述，哪些是转述，这一步决定了后面吃瓜时的判断基础。</p>
+        </li>
+        <li>
+          <time>下午 · 关注升温</time>
+          <h4>焦点转向评价标准</h4>
+          <p>讨论从“发生了什么”转向“该怎么看”。这是热点最容易分歧的阶段，也是在线吃瓜时最值得留意的部分。</p>
+        </li>
+        <li>
+          <time>傍晚 · 热度回落</time>
+          <h4>形成阶段性共识或保留疑问</h4>
+          <p>部分问题得到回应，部分仍无定论。把未解决的部分记下来，往往就是第二天继续关注的方向。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap split">
+      <div class="panel">
+        <h3>这样看吃瓜内容更清楚</h3>
+        <ul class="checklist">
+          <li><strong>先看来源时间</strong>：早发布的说法未必完整，晚发布的内容可能带着立场。</li>
+          <li><strong>区分事实与评价</strong>：发生了什么，和别人怎么看，是两件事。</li>
+          <li><strong>留意补充说明</strong>：不少热点在后续补充后，方向会明显变化。</li>
+          <li><strong>不急着下结论</strong>：每日大赛在线吃瓜的乐趣在于过程，判断可以慢一点。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>适合哪些人来逛</h3>
+        <ul class="checklist">
+          <li>想快速了解当天大赛热点大概情况的<strong>轻度关注者</strong>。</li>
+          <li>已经在别处看到片段、希望补齐<strong>前后顺序</strong>的读者。</li>
+          <li>对讨论分歧感兴趣、想看不同<strong>解读角度</strong>的人。</li>
+          <li>习惯每天固定时间刷一遍热点的<strong>日常访客</strong>。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="board">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>热门看板</h2>
+          <p>按类型筛选当日条目，点击标签即可切换。</p>
+        </div>
+      </div>
+      <div class="filter-bar" role="group" aria-label="看板筛选">
+        <button class="chip on" type="button" data-filter="all">全部</button>
+        <button class="chip" type="button" data-filter="hot">热议</button>
+        <button class="chip" type="button" data-filter="view">观点</button>
+        <button class="chip" type="button" data-filter="follow">后续</button>
+      </div>
+      <div class="feed" id="feed">
+        <article class="item" data-type="hot">
+          <div class="meta"><b>热议</b><span>讨论集中</span></div>
+          <h4>每日大赛在线吃瓜的讨论高峰出现在哪</h4>
+          <p>多数条目在结果公布后一到两小时内被大量转述，这段时间的讨论密度最高，也是信息最杂的阶段。</p>
+        </article>
+        <article class="item" data-type="view">
+          <div class="meta"><b>观点</b><span>分歧明显</span></div>
+          <h4>同一场大赛，为什么评价差这么多</h4>
+          <p>评价标准不同是主要原因。有人看过程，有人看结果，两种角度放在一起就容易形成对立表达。</p>
+        </article>
+        <article class="item" data-type="follow">
+          <div class="meta"><b>后续</b><span>持续更新</span></div>
+          <h4>补充说法出现后，关注点会转移</h4>
+          <p>当新的对照材料出现，原本的争议点可能被替换。在线吃瓜时把补充信息放在时间线上看，会更接近完整图景。</p>
+        </article>
+        <article class="item" data-type="hot">
+          <div class="meta"><b>热议</b><span>转述较多</span></div>
+          <h4>短内容传播快，但容易丢背景</h4>
+          <p>一句话结论在传播中最省力，也最容易脱离上下文。每日大赛在线吃瓜时，回到完整表述再看一遍很必要。</p>
+        </article>
+        <article class="item" data-type="view">
+          <div class="meta"><b>观点</b><span>角度补充</span></div>
+          <h4>把讨论当作观察窗口</h4>
+          <p>热点的价值不只在结论，还在于它暴露了哪些关注焦点。看讨论区在争什么，往往比看结论更有意思。</p>
+        </article>
+        <article class="item" data-type="follow">
+          <div class="meta"><b>后续</b><span>次日回看</span></div>
+          <h4>当天没定论的事，第二天常常有变化</h4>
+          <p>隔一天回看，能更清楚地分辨哪些说法被保留，哪些被修正。这是每日大赛在线吃瓜比较实用的习惯。</p>
+        </article>
+      </div>
+      <p class="empty" id="empty">该分类下暂时没有条目，切换到“全部”看看。</p>
+    </div>
+  </section>
+
+  <section class="block" id="rules">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>吃瓜须知</h2>
+          <p>关于内容边界与使用方式，几句话说明白。</p>
+        </div>
+      </div>
+      <div class="note">
+        <p style="margin:0 0 10px"><strong>内容定位：</strong>本站以每日大赛在线吃瓜的热点梳理为主，呈现的是公开讨论中的关注方向与表达差异，不对未证实说法作结论性判断。涉及当事人的内容，以公开表述为准。</p>
+        <p style="margin:0 0 10px"><strong>阅读建议：</strong>看到转述时，先确认时间与出处；看到评价时，先分辨立场。每日大赛在线吃瓜更适合当作了解讨论脉络的入口，而不是唯一依据。</p>
+        <p style="margin:0"><strong>更新节奏：</strong>各栏目按当日讨论情况补充条目，时间线随新的补充说法向后延伸。若某日条目较少，说明当日讨论集中度不高，属正常情况。</p>
+      </div>
+      <div class="btn-row" style="margin-top:20px">
+        <a class="btn primary" href="#today">回到今日看点</a>
+        <a class="btn ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1f2227"/>
+            <path d="M20 26c0-5 4-9 9-9h6c5 0 9 4 9 9v4c0 7-4 11-9 11h-2l-6 6v-6c-4-1-7-5-7-11z" fill="#ffb648"/>
+            <circle cx="28" cy="27" r="2.4" fill="#151619"/>
+            <circle cx="37" cy="27" r="2.4" fill="#151619"/>
+          </svg>
+          <span>每日大赛在线吃瓜</span>
+        </a>
+        <p>每日大赛在线吃瓜，围绕当日大赛热点整理看点、时间线与讨论分歧，帮助访客按顺序了解吃瓜内容。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h5>内容</h5>
+          <a href="#today">今日看点</a>
+          <a href="#timeline">当日时间线</a>
+          <a href="#board">热门看板</a>
+        </div>
+        <div>
+          <h5>说明</h5>
+          <a href="#rules">吃瓜须知</a>
+          <a href="#top">返回顶部</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <span>每日大赛在线吃瓜 · 热点内容按当日讨论情况更新</span>
+      <span>内容仅为讨论脉络梳理，不构成事实认定</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips = document.querySelectorAll('.chip');
+  var items = document.querySelectorAll('#feed .item');
+  var empty = document.getElementById('empty');
+  chips.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      chips.forEach(function(b){ b.classList.remove('on'); });
+      btn.classList.add('on');
+      var f = btn.getAttribute('data-filter');
+      var shown = 0;
+      items.forEach(function(it){
+        var ok = (f === 'all' || it.getAttribute('data-type') === f);
+        it.style.display = ok ? '' : 'none';
+        if(ok) shown++;
+      });
+      empty.style.display = shown ? 'none' : 'block';
+    });
+  });
+})();
+</script>
+</body>
+</html>
